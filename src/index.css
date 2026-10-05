@@ -1,0 +1,568 @@
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================================
+   LIGHT MODE DESIGN SYSTEM - PREDICTLOG BHARAT SUSTAINMENT GRID
+   High-Contrast Utilitarian Defense Logistics (Daylight / Command Briefing)
+   ========================================================================== */
+
+html.light {
+  color-scheme: light;
+}
+
+/* Base Canvas & Shell Surfaces */
+html.light .bg-surface {
+  background-color: #f1f5f9 !important;
+}
+html.light .bg-surface-dim {
+  background-color: #e2e8f0 !important;
+}
+html.light .bg-surface-bright {
+  background-color: #ffffff !important;
+}
+html.light .bg-surface-variant {
+  background-color: #dbe4ee !important;
+}
+html.light .bg-surface-container-lowest {
+  background-color: #ffffff !important;
+}
+html.light .bg-surface-container-low {
+  background-color: #e8edf3 !important;
+}
+html.light .bg-surface-container {
+  background-color: #e1e7ef !important;
+}
+html.light .bg-surface-container-high {
+  background-color: #d6dfea !important;
+}
+html.light .bg-surface-container-highest {
+  background-color: #c7d3e0 !important;
+}
+
+/* Custom hardcoded dark hex backgrounds in mockups & GIS frames */
+html.light .bg-\[\#0b141c\],
+html.light .bg-\[\#0b1218\],
+html.light .bg-\[\#060f17\],
+html.light .bg-\[\#111a22\],
+html.light .bg-\[\#141c25\],
+html.light .bg-\[\#182029\] {
+  background-color: #e9edf3 !important;
+}
+
+/* Translucent & Alpha Background Modifiers */
+html.light .bg-surface-container-high\/90 {
+  background-color: rgba(214, 223, 234, 0.95) !important;
+}
+html.light .bg-surface-container-high\/60 {
+  background-color: rgba(214, 223, 234, 0.75) !important;
+}
+html.light .bg-surface-container-high\/40 {
+  background-color: rgba(214, 223, 234, 0.5) !important;
+}
+html.light .bg-surface-container-low\/95 {
+  background-color: rgba(232, 237, 243, 0.98) !important;
+}
+html.light .bg-surface-container-low\/90 {
+  background-color: rgba(232, 237, 243, 0.92) !important;
+}
+html.light .bg-surface-container-low\/60 {
+  background-color: rgba(232, 237, 243, 0.75) !important;
+}
+html.light .bg-surface-container-lowest\/90 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+html.light .bg-surface-container-lowest\/80 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+html.light .bg-surface-container-lowest\/50 {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+html.light .bg-surface-container\/95 {
+  background-color: rgba(225, 231, 239, 0.98) !important;
+}
+html.light .bg-surface-container\/50 {
+  background-color: rgba(225, 231, 239, 0.6) !important;
+}
+
+/* Interactive Hover States in Light Mode */
+html.light .hover\:bg-surface-bright:hover {
+  background-color: #ffffff !important;
+}
+html.light .hover\:bg-surface-container:hover {
+  background-color: #dbe4ee !important;
+}
+html.light .hover\:bg-surface-container-high:hover {
+  background-color: #cbd7e4 !important;
+}
+html.light .hover\:bg-surface-container-highest:hover {
+  background-color: #bccada !important;
+}
+html.light .hover\:bg-surface-container-high\/40:hover {
+  background-color: rgba(214, 223, 234, 0.55) !important;
+}
+html.light .hover\:bg-surface-container-high\/50:hover {
+  background-color: rgba(214, 223, 234, 0.65) !important;
+}
+html.light .hover\:bg-surface-container-high\/60:hover {
+  background-color: rgba(214, 223, 234, 0.75) !important;
+}
+html.light .hover\:bg-surface-container\/60:hover {
+  background-color: rgba(225, 231, 239, 0.8) !important;
+}
+
+/* High-Contrast Typography & Text */
+html.light .text-on-surface {
+  color: #0f172a !important; /* deep slate-900 */
+}
+html.light .text-on-surface-variant {
+  color: #334155 !important; /* slate-700 */
+}
+html.light .text-on-surface-variant\/80 {
+  color: rgba(51, 65, 85, 0.88) !important;
+}
+html.light .text-on-surface-variant\/70 {
+  color: rgba(51, 65, 85, 0.78) !important;
+}
+html.light .text-on-surface-variant\/60 {
+  color: rgba(51, 65, 85, 0.68) !important;
+}
+html.light .text-outline {
+  color: #475569 !important;
+}
+html.light .text-outline-variant {
+  color: #64748b !important;
+}
+
+/* Primary Brand Color (Deep Teal Steel for light contrast) */
+html.light .text-primary {
+  color: #006870 !important;
+}
+html.light .text-primary-fixed {
+  color: #004f54 !important;
+}
+html.light .bg-primary {
+  background-color: #006870 !important;
+}
+html.light .bg-primary-container {
+  background-color: #0c7c83 !important;
+}
+html.light .bg-primary-container\/80 {
+  background-color: rgba(12, 124, 131, 0.88) !important;
+}
+html.light .bg-primary-container\/20 {
+  background-color: rgba(12, 124, 131, 0.15) !important;
+}
+html.light .bg-primary\/20 {
+  background-color: rgba(0, 104, 112, 0.15) !important;
+}
+html.light .bg-primary\/30 {
+  background-color: rgba(0, 104, 112, 0.22) !important;
+}
+html.light .text-on-primary {
+  color: #ffffff !important;
+}
+html.light .text-on-primary-container {
+  color: #ffffff !important;
+}
+html.light .text-on-primary-fixed {
+  color: #ffffff !important;
+}
+html.light .hover\:text-primary:hover {
+  color: #004f54 !important;
+}
+html.light .hover\:bg-primary:hover {
+  background-color: #00565d !important;
+}
+html.light .hover\:bg-primary-container\/20:hover {
+  background-color: rgba(12, 124, 131, 0.22) !important;
+}
+html.light .hover\:bg-primary-container\/80:hover {
+  background-color: rgba(12, 124, 131, 0.92) !important;
+}
+
+/* Secondary Colors */
+html.light .text-secondary {
+  color: #1d4ed8 !important;
+}
+html.light .text-secondary-fixed {
+  color: #1e3a8a !important;
+}
+html.light .bg-secondary {
+  background-color: #1d4ed8 !important;
+}
+html.light .bg-secondary-container {
+  background-color: #dbeafe !important;
+}
+html.light .text-on-secondary-container {
+  color: #1e3a8a !important;
+}
+
+/* Alert & Warning (Tertiary - Deep Amber / Saffron) */
+html.light .text-tertiary {
+  color: #b45309 !important; /* amber-700 */
+}
+html.light .text-tertiary\/90 {
+  color: rgba(180, 83, 9, 0.95) !important;
+}
+html.light .text-tertiary\/80 {
+  color: rgba(180, 83, 9, 0.88) !important;
+}
+html.light .bg-tertiary {
+  background-color: #b45309 !important;
+}
+html.light .bg-tertiary-container {
+  background-color: #fef3c7 !important;
+}
+html.light .bg-tertiary-container\/10 {
+  background-color: rgba(254, 243, 199, 0.5) !important;
+}
+html.light .bg-tertiary-container\/20 {
+  background-color: rgba(254, 243, 199, 0.75) !important;
+}
+html.light .bg-tertiary-container\/30 {
+  background-color: rgba(254, 243, 199, 0.9) !important;
+}
+html.light .bg-tertiary-container\/40 {
+  background-color: #fde68a !important;
+}
+html.light .text-on-tertiary-container {
+  color: #78350f !important;
+}
+html.light .hover\:bg-tertiary-container\/20:hover {
+  background-color: rgba(254, 243, 199, 0.95) !important;
+}
+
+/* Critical & Error (Vermilion / Crimson Alert) */
+html.light .text-error {
+  color: #b91c1c !important; /* red-700 */
+}
+html.light .text-error\/90 {
+  color: rgba(185, 28, 28, 0.92) !important;
+}
+html.light .bg-error {
+  background-color: #b91c1c !important;
+}
+html.light .bg-error\/20 {
+  background-color: rgba(185, 28, 28, 0.15) !important;
+}
+html.light .bg-error-container {
+  background-color: #fee2e2 !important;
+}
+html.light .bg-error-container\/10 {
+  background-color: rgba(254, 226, 226, 0.5) !important;
+}
+html.light .bg-error-container\/20 {
+  background-color: rgba(254, 226, 226, 0.75) !important;
+}
+html.light .bg-error-container\/40 {
+  background-color: #fecaca !important;
+}
+html.light .text-on-error {
+  color: #ffffff !important;
+}
+html.light .text-on-error-container {
+  color: #7f1d1d !important;
+}
+html.light .hover\:bg-error-container\/20:hover {
+  background-color: rgba(254, 226, 226, 0.95) !important;
+}
+html.light .hover\:bg-error-container\/30:hover {
+  background-color: #fecaca !important;
+}
+
+/* Hairline Dividers & Borders */
+html.light .border-outline-variant {
+  border-color: #cbd5e1 !important;
+}
+html.light .border-outline-variant\/20 {
+  border-color: rgba(203, 213, 225, 0.45) !important;
+}
+html.light .border-outline-variant\/30 {
+  border-color: rgba(203, 213, 225, 0.65) !important;
+}
+html.light .border-outline-variant\/40 {
+  border-color: rgba(203, 213, 225, 0.85) !important;
+}
+html.light .border-outline {
+  border-color: #94a3b8 !important;
+}
+html.light .border-primary {
+  border-color: #006870 !important;
+}
+html.light .border-primary\/30 {
+  border-color: rgba(0, 104, 112, 0.3) !important;
+}
+html.light .border-primary\/40 {
+  border-color: rgba(0, 104, 112, 0.4) !important;
+}
+html.light .border-primary\/50 {
+  border-color: rgba(0, 104, 112, 0.5) !important;
+}
+html.light .border-secondary\/30 {
+  border-color: rgba(29, 78, 216, 0.3) !important;
+}
+html.light .border-tertiary {
+  border-color: #d97706 !important;
+}
+html.light .border-tertiary\/30 {
+  border-color: rgba(217, 119, 6, 0.35) !important;
+}
+html.light .border-tertiary\/40 {
+  border-color: rgba(217, 119, 6, 0.45) !important;
+}
+html.light .border-tertiary-container {
+  border-color: #b45309 !important;
+}
+html.light .border-tertiary-container\/40 {
+  border-color: rgba(180, 83, 9, 0.4) !important;
+}
+html.light .border-error {
+  border-color: #dc2626 !important;
+}
+html.light .border-error\/30 {
+  border-color: rgba(220, 38, 38, 0.35) !important;
+}
+html.light .border-error\/40 {
+  border-color: rgba(220, 38, 38, 0.45) !important;
+}
+html.light .border-error\/50 {
+  border-color: rgba(220, 38, 38, 0.55) !important;
+}
+html.light .border-r-error,
+html.light .border-l-error {
+  border-color: #dc2626 !important;
+}
+html.light .border-r-tertiary,
+html.light .border-l-tertiary {
+  border-color: #d97706 !important;
+}
+html.light .border-l-primary {
+  border-color: #006870 !important;
+}
+html.light .border-l-surface-variant {
+  border-color: #cbd5e1 !important;
+}
+html.light .divide-outline-variant\/20 > :not(:last-child) {
+  border-color: rgba(203, 213, 225, 0.55) !important;
+}
+html.light .divide-surface-container-lowest > :not(:last-child) {
+  border-color: #e2e8f0 !important;
+}
+
+/* Gradients in Light Mode */
+html.light .from-surface-container-low {
+  --tw-gradient-from: #e8edf3 !important;
+}
+html.light .via-surface-container-low\/70 {
+  --tw-gradient-via: rgba(232, 237, 243, 0.8) !important;
+}
+
+/* Form Inputs, Dropdowns, and Search Fields */
+html.light input,
+html.light select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html.light input::placeholder {
+  color: #64748b !important;
+}
+
+/* ==========================================================================
+   TACTICAL MAPS, VECTOR CHARTS & SVG DIAGRAMS IN LIGHT MODE
+   ========================================================================== */
+
+/* 1. Tactical Cartography Surface in GIS Viewports */
+html.light #gis-viewport,
+html.light [data-location="Ladakh, India"] {
+  opacity: 0.22 !important;
+  mix-blend-mode: multiply !important;
+  filter: contrast(115%) brightness(108%) saturate(60%) !important;
+}
+
+/* Reticle / Coordinate grid lines on maps */
+html.light pattern#grid path {
+  stroke: #006870 !important;
+  stroke-opacity: 0.3 !important;
+}
+html.light pattern#grid circle {
+  fill: #006870 !important;
+  fill-opacity: 0.4 !important;
+}
+html.light svg g[stroke="#3e494a"] {
+  stroke: #94a3b8 !important;
+  stroke-opacity: 0.55 !important;
+}
+
+/* Topographic mountain contours & elevation gradient */
+html.light #mountainRidge stop[offset="0%"] {
+  stop-color: #cdd9e6 !important;
+  stop-opacity: 0.85 !important;
+}
+html.light #mountainRidge stop[offset="100%"] {
+  stop-color: #e9edf3 !important;
+  stop-opacity: 0.1 !important;
+}
+html.light svg path[fill="#141c25"] {
+  fill: #d2dee9 !important;
+  opacity: 0.75 !important;
+}
+html.light svg path[stroke="#222b33"],
+html.light svg path[stroke="#2d363e"],
+html.light svg g[stroke="#2d363e"] {
+  stroke: #94a3b8 !important;
+  stroke-opacity: 0.85 !important;
+}
+
+/* Tactical AOR Demarcations & Polygons */
+html.light svg polygon[stroke="#ffb4ab"] {
+  stroke: #dc2626 !important;
+  fill: #fee2e2 !important;
+  fill-opacity: 0.2 !important;
+}
+html.light svg polygon[stroke="#7bd4dc"] {
+  stroke: #006870 !important;
+  fill: #ccfbf1 !important;
+  fill-opacity: 0.2 !important;
+}
+html.light svg polygon[stroke="#aec9ec"] {
+  stroke: #2563eb !important;
+  fill: #dbeafe !important;
+  fill-opacity: 0.25 !important;
+}
+
+/* Supply Corridors and Axes */
+html.light svg path[stroke="#2e4966"] {
+  stroke: #1e40af !important;
+  stroke-width: 3px !important;
+}
+html.light svg path[stroke="#0c7c83"] {
+  stroke: #006870 !important;
+  stroke-width: 4px !important;
+}
+html.light svg path[stroke="#7bd4dc"] {
+  stroke: #ffffff !important;
+}
+html.light svg path[stroke="#aec9ec"] {
+  stroke: #2563eb !important;
+}
+html.light svg path[stroke="#ffb86b"] {
+  stroke: #d97706 !important;
+}
+
+/* Chokepoint & Weather Hazard Areas */
+html.light pattern#hazardHatch line {
+  stroke: #d97706 !important;
+}
+html.light svg polygon[stroke="#ffb86b"] {
+  stroke: #d97706 !important;
+}
+
+/* Callout Rectangles, Depots & Node Badges */
+html.light svg rect[fill="#060f17"],
+html.light svg rect[fill="#141c25"],
+html.light svg rect[fill="#182029"] {
+  fill: #ffffff !important;
+  stroke: #94a3b8 !important;
+}
+html.light svg circle[fill="#060f17"] {
+  fill: #ffffff !important;
+}
+html.light svg polygon[fill="#141c25"] {
+  fill: #ffffff !important;
+}
+
+/* SVG Text Readability & Legibility */
+html.light svg text[fill="#ffffff"],
+html.light svg text[fill="#dae3ef"] {
+  fill: #0f172a !important;
+  font-weight: 600 !important;
+}
+html.light svg text[fill="#bdc9c9"] {
+  fill: #475569 !important;
+}
+html.light svg text[fill="#889394"] {
+  fill: #475569 !important;
+}
+html.light svg text[fill="#7bd4dc"] {
+  fill: #006870 !important;
+  font-weight: 700 !important;
+}
+html.light svg text[fill="#aec9ec"] {
+  fill: #1d4ed8 !important;
+  font-weight: 700 !important;
+}
+html.light svg text[fill="#ffb4ab"] {
+  fill: #b91c1c !important;
+  font-weight: 700 !important;
+}
+html.light svg text[fill="#ffb86b"] {
+  fill: #9a3412 !important;
+  font-weight: 700 !important;
+}
+
+/* SVG Markers */
+html.light #chevron-teal path {
+  fill: #006870 !important;
+}
+html.light #chevron-slate path {
+  fill: #1d4ed8 !important;
+}
+
+/* Timeline & COA Chart Components */
+html.light svg line[stroke="#222b33"],
+html.light svg line[stroke="#2d363e"] {
+  stroke: #cbd5e1 !important;
+}
+html.light svg line[stroke="#ffb4ab"] {
+  stroke: #dc2626 !important;
+}
+html.light svg line[stroke="#7bd4dc"] {
+  stroke: #006870 !important;
+}
+html.light svg line[stroke="#aec9ec"] {
+  stroke: #1d4ed8 !important;
+}
+html.light svg line[stroke="#ffb86b"] {
+  stroke: #d97706 !important;
+}
+html.light svg circle[fill="#0c7c83"] {
+  fill: #006870 !important;
+}
+html.light svg circle[fill="#2e4966"] {
+  fill: #1d4ed8 !important;
+}
+html.light svg circle[fill="#a16100"] {
+  fill: #d97706 !important;
+}
+
+/* Floating Drawers & Overlays in Map Page */
+html.light #layer-control-panel,
+html.light #node-detail-drawer {
+  background-color: rgba(248, 250, 252, 0.98) !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}

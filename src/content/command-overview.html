@@ -1,0 +1,750 @@
+<div class="flex flex-col w-full text-on-surface select-none pb-12">
+<!-- PERSISTENT EXERCISE SUB-STRIP & CONTEXT OVERLAY -->
+<div class="bg-surface-container-low px-space-lg py-2 flex flex-wrap items-center justify-between gap-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-primary-container inline-block"></span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-on-surface">COMMAND OVERVIEW</span>
+</div>
+<span class="text-outline-variant">/</span>
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant">
+<span>Northern Sector</span>
+<span class="text-outline-variant">›</span>
+<span class="text-primary font-medium">Supply Risk Assessment</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant/70 uppercase">Context:</span>
+<span class="text-tertiary bg-tertiary-container/30 px-1.5 py-0.5 border border-tertiary/40">EXERCISE TRISHUL // SCENARIO 04</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+<span>05 OCT 2026 · 17:30:00 IST</span>
+</div>
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="w-1.5 h-1.5 bg-secondary animate-ping"></span>
+<span>CYCLE 87.4 MHZ</span>
+</div>
+</div>
+</div>
+<!-- TOP KPI STRIP (6 Metrics with hairline borders & IBM Plex Mono) -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 bg-surface-container border-b border-outline-variant/30">
+<!-- KPI 1 -->
+<div class="p-space-md border-r border-b lg:border-b-0 border-outline-variant/30 flex flex-col justify-between hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Formations Monitored</span>
+<span class="w-2 h-2 bg-primary"></span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg font-bold text-on-surface tracking-tight">12</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary uppercase">Nominal [12/12]</span>
+</div>
+<div class="mt-2 text-label-sm font-label-sm text-on-surface-variant/70 truncate">Frontier HQ &amp; Strike corps</div>
+</div>
+<!-- KPI 2 (CRITICAL) -->
+<div class="p-space-md border-r border-b lg:border-b-0 border-outline-variant/30 flex flex-col justify-between bg-error-container/10 border-l-2 border-l-error hover:bg-error-container/20 transition-colors">
+<div class="flex items-center justify-between text-error mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Critical Shortfalls</span>
+<span class="material-symbols-outlined text-[16px] text-error">error</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg font-bold text-error tracking-tight">03</span>
+<span class="font-telemetry-sm text-telemetry-sm bg-error text-on-error px-1 py-0.2 uppercase font-semibold">Action Req</span>
+</div>
+<div class="mt-2 text-label-sm font-label-sm text-error/90 truncate">POL &amp; Critical Medical Stock</div>
+</div>
+<!-- KPI 3 (AMBER) -->
+<div class="p-space-md border-r border-b lg:border-b-0 border-outline-variant/30 flex flex-col justify-between bg-tertiary-container/10 border-l-2 border-l-tertiary hover:bg-tertiary-container/20 transition-colors">
+<div class="flex items-center justify-between text-tertiary mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">At-Risk Categories</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">warning</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg font-bold text-tertiary tracking-tight">08</span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary uppercase">Surge Watch</span>
+</div>
+<div class="mt-2 text-label-sm font-label-sm text-tertiary/90 truncate">High depletion rate detected</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-space-md border-r border-b md:border-b-0 border-outline-variant/30 flex flex-col justify-between hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Active Convoys</span>
+<span class="material-symbols-outlined text-[16px] text-primary">local_shipping</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg font-bold text-primary tracking-tight">17</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary uppercase">In Transit</span>
+</div>
+<div class="mt-2 text-label-sm font-label-sm text-on-surface-variant/70 truncate">4 Mountain corridors active</div>
+</div>
+<!-- KPI 5 -->
+<div class="p-space-md border-r border-outline-variant/30 flex flex-col justify-between hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Data Freshness</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">sensors</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg font-bold text-on-surface tracking-tight">87%</span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary uppercase">2 Stale Feeds</span>
+</div>
+<div class="mt-2 text-label-sm font-label-sm text-on-surface-variant/70 truncate">Store &amp; Fwd lag: avg 11m</div>
+</div>
+<!-- KPI 6 (EARLIEST STOCK-OUT) -->
+<div class="p-space-md flex flex-col justify-between bg-surface-container-low border-l-2 border-l-error hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center justify-between text-error mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Earliest Stock-Out</span>
+<span class="material-symbols-outlined text-[16px] text-error animate-pulse">timer</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg font-bold text-error tracking-tight">18h 40m</span>
+</div>
+<div class="mt-2 text-label-sm font-label-sm text-on-surface font-medium truncate">Leh Fwd Node — POL/Diesel</div>
+</div>
+</div>
+<!-- MAIN OPERATIONAL SPLIT LAYOUT (58% Left GIS Map / 42% Right Decision Queue) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 min-h-[640px] border-b border-outline-variant/30 bg-surface">
+<!-- LEFT PANEL: TACTICAL GIS OPERATIONAL MAP (7 cols on 12-col grid = ~58.3%) -->
+<div class="lg:col-span-7 relative flex flex-col bg-surface-container-lowest border-r border-outline-variant/30 overflow-hidden min-h-[580px]">
+<!-- TOP MAP TOOLBAR & LAYER TOGGLES -->
+<div class="absolute top-3 left-3 right-3 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+<div class="flex flex-wrap items-center gap-1 bg-surface-container-high/90 border border-outline-variant/40 p-1 pointer-events-auto backdrop-blur-sm shadow-md">
+<button class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase flex items-center gap-1 hover:brightness-110">
+<span class="material-symbols-outlined text-[13px]">radio_button_checked</span>
+<span>Nodes [Active]</span>
+</button>
+<button class="px-2 py-0.5 bg-surface-container text-on-surface font-label-sm text-label-sm uppercase border border-outline-variant/30 hover:border-primary/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">local_shipping</span>
+<span>Convoys [17]</span>
+</button>
+<button class="px-2 py-0.5 bg-error-container/40 text-error border border-error/50 font-label-sm text-label-sm uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>Risk Polygons</span>
+</button>
+<button class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase hover:text-on-surface border border-outline-variant/30 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">cloud</span>
+<span>Weather [On]</span>
+</button>
+<button class="hidden xl:flex px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase hover:text-on-surface border border-outline-variant/30 items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">block</span>
+<span>Route Closures</span>
+</button>
+</div>
+<div class="hidden sm:flex items-center gap-1 bg-surface-container-high/90 border border-outline-variant/40 px-2 py-1 pointer-events-auto font-telemetry-sm text-telemetry-sm text-on-surface">
+<span class="text-on-surface-variant">GRID:</span>
+<span class="text-primary font-semibold">43S ED 8824 1904</span>
+</div>
+</div>
+<!-- MAP VIEWPORT SVG CANVAS (Northern/Western India with Northeast Inset) -->
+<div class="relative w-full h-full flex-1 bg-[#0b141c] overflow-hidden flex items-center justify-center min-h-[520px]">
+<!-- Cartographic Grid / Reticle Lines -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="60" id="grid" patternunits="userSpaceOnUse" width="60">
+<path d="M 60 0 L 0 0 0 60" fill="none" stroke="#7bd4dc" stroke-width="0.5"></path>
+<circle cx="0" cy="0" fill="#7bd4dc" r="1.5"></circle>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Dynamic High-Precision Military Vector Map -->
+<svg class="w-full h-full object-cover select-none" fill="none" viewbox="0 0 880 620" xmlns="http://www.w3.org/2000/svg">
+<!-- Definitions for patterns and markers -->
+<defs>
+<!-- Weather Hazard diagonal hatch -->
+<pattern height="8" id="hazardHatch" patterntransform="rotate(45 0 0)" patternunits="userSpaceOnUse" width="8">
+<line opacity="0.6" stroke="#ffb86b" stroke-width="2.5" x1="0" x2="0" y1="0" y2="8"></line>
+</pattern>
+<!-- Elevation contour gradient -->
+<radialgradient cx="50%" cy="30%" id="mountainRidge" r="55%">
+<stop offset="0%" stop-color="#182029" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#0b141c" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+<!-- Topographic elevation contours (Northern Himalayas & Pir Panjal ranges) -->
+<ellipse cx="440" cy="180" fill="url(#mountainRidge)" rx="340" ry="120"></ellipse>
+<path d="M 120 220 Q 300 130 520 110 T 820 180 L 860 300 L 100 290 Z" fill="#141c25" opacity="0.6"></path>
+<path d="M 220 170 Q 380 90 540 80 T 780 140" fill="none" stroke="#222b33" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<path d="M 240 210 Q 420 130 600 110 T 760 170" fill="none" stroke="#222b33" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<path d="M 180 260 Q 320 190 510 160 T 720 230" fill="none" stroke="#222b33" stroke-dasharray="2 3" stroke-width="1.2"></path>
+<!-- Formation Demand Polygons (Translucent Tactical Area of Responsibility) -->
+<!-- 14 Mtn Sust Gp Polygon -->
+<polygon fill="#ffb4ab" fill-opacity="0.06" points="380,80 540,65 590,140 450,180 370,130" stroke="#ffb4ab" stroke-dasharray="4 4" stroke-width="1"></polygon>
+<text fill="#ffb4ab" font-family="IBM Plex Mono" font-size="10" letter-spacing="1" x="440" y="85">TAOR: 14 MTN SUST GP</text>
+<!-- 9 Fwd Support Polygon -->
+<polygon fill="#7bd4dc" fill-opacity="0.04" points="170,270 310,240 340,340 180,380" stroke="#7bd4dc" stroke-dasharray="3 3" stroke-width="1"></polygon>
+<text fill="#7bd4dc" font-family="IBM Plex Mono" font-size="10" letter-spacing="1" x="190" y="290">TAOR: 09 FWD SUPP</text>
+<!-- PRIMARY LOGISTICS CORRIDORS -->
+<!-- Pathankot to Srinagar Corridor -->
+<path d="M 290 310 L 290 200" stroke="#2e4966" stroke-linecap="square" stroke-width="3"></path>
+<!-- Srinagar to Leh Corridor (via Sonamarg / Zoji-La) -->
+<path d="M 290 200 L 370 170 L 480 120" stroke="#0c7c83" stroke-linecap="square" stroke-width="3"></path>
+<!-- Chandigarh to Pathankot -->
+<path d="M 360 380 L 290 310" stroke="#2e4966" stroke-linecap="square" stroke-width="2.5"></path>
+<!-- Jaisalmer to Pathankot Support Axis -->
+<path d="M 190 490 L 290 310" stroke="#2e4966" stroke-dasharray="6 3" stroke-width="2"></path>
+<!-- Chandigarh to Uttarakhand Foothills -->
+<path d="M 360 380 L 470 330" stroke="#2e4966" stroke-width="2"></path>
+<!-- DISRUPTION / CHOKEPOINT SEGMENT: ZOJI-LA PASS WEATHER DELAY -->
+<!-- Hatched overlay on Zoji-La segment (between 330,185 and 410,155) -->
+<polygon fill="url(#hazardHatch)" points="325,170 385,145 425,165 365,190" stroke="#ffb86b" stroke-width="1.5"></polygon>
+<!-- Weather Cell Warning Icon and Tag -->
+<rect fill="#060f17" height="24" stroke="#ffb86b" stroke-width="1" width="168" x="330" y="195"></rect>
+<circle cx="342" cy="207" fill="#ffb86b" r="4"></circle>
+<text fill="#ffb86b" font-family="IBM Plex Mono" font-size="9" font-weight="600" x="352" y="211">ZOJI-LA: SNOW +4h 20m</text>
+<!-- CONVOY CHEVRONS IN TRANSIT -->
+<!-- Convoy CV-047 (En Route to Leh, trapped behind pass delay) -->
+<g transform="translate(360, 160) rotate(-22)">
+<rect fill="#060f17" height="14" stroke="#ffb86b" stroke-width="1.2" width="16" x="-8" y="-7"></rect>
+<path d="M -3 -4 L 3 0 L -3 4" fill="none" stroke="#ffb86b" stroke-width="1.8"></path>
+<text fill="#ffb86b" font-family="IBM Plex Mono" font-size="10" font-weight="600" x="12" y="3">CV-047</text>
+</g>
+<!-- Convoy CV-052 (Pathankot - Srinagar) -->
+<g transform="translate(290, 255) rotate(-90)">
+<rect fill="#0c7c83" height="12" stroke="#7bd4dc" stroke-width="1" width="14" x="-7" y="-6"></rect>
+<path d="M -2 -3 L 2 0 L -2 3" fill="none" stroke="#d6fcff" stroke-width="1.5"></path>
+<text fill="#7bd4dc" font-family="IBM Plex Mono" font-size="9" font-weight="600" x="10" y="4">CV-052</text>
+</g>
+<!-- Convoy CV-066 (Chandigarh - Pathankot) -->
+<g transform="translate(325, 345) rotate(-45)">
+<rect fill="#0c7c83" height="12" stroke="#7bd4dc" stroke-width="1" width="14" x="-7" y="-6"></rect>
+<path d="M -2 -3 L 2 0 L -2 3" fill="none" stroke="#d6fcff" stroke-width="1.5"></path>
+<text fill="#7bd4dc" font-family="IBM Plex Mono" font-size="9" x="10" y="4">CV-066</text>
+</g>
+<!-- LOGISTICS NODES PLOTTED -->
+<!-- NODE 1: LEH FORWARD NODE (CRITICAL STOCK-OUT RISK - Vermilion Pulsing Halo) -->
+<g transform="translate(480, 120)">
+<!-- Pulsing alert ring -->
+<circle cx="0" cy="0" fill="none" r="18" stroke="#ffb4ab" stroke-dasharray="3 3" stroke-width="1.5">
+<animate attributename="r" dur="2.4s" repeatcount="indefinite" values="12;24;12"></animate>
+<animate attributename="opacity" dur="2.4s" repeatcount="indefinite" values="0.9;0.1;0.9"></animate>
+</circle>
+<circle cx="0" cy="0" fill="#93000a" r="8" stroke="#ffb4ab" stroke-width="2"></circle>
+<circle cx="0" cy="0" fill="#ffffff" r="3"></circle>
+<!-- Pin label callout banner -->
+<g transform="translate(14, -22)">
+<rect fill="#060f17" height="38" stroke="#ffb4ab" stroke-width="1.5" width="138"></rect>
+<rect fill="#ffb4ab" height="38" width="4" x="0" y="0"></rect>
+<text fill="#ffffff" font-family="IBM Plex Sans" font-size="10" font-weight="700" x="8" y="14">LEH FORWARD NODE</text>
+<text fill="#ffb4ab" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" x="8" y="25">POL DIESEL: -18h 40m</text>
+<text fill="#bdc9c9" font-family="IBM Plex Mono" font-size="7.5" x="8" y="34">14 Mtn Sust Gp · Resupply 26h</text>
+</g>
+</g>
+<!-- NODE 2: SRINAGAR TRANSIT NODE (Diamond marker - Amber Route Delay) -->
+<g transform="translate(290, 200)">
+<rect fill="#ffb86b" height="12" stroke="#060f17" stroke-width="1.5" transform="rotate(45)" width="12" x="-6" y="-6"></rect>
+<circle cx="0" cy="0" fill="#060f17" r="2"></circle>
+<g transform="translate(-130, -18)">
+<rect fill="#060f17" height="26" stroke="#3e494a" stroke-width="1" width="122"></rect>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="9" font-weight="600" x="6" y="12">SRINAGAR TRANSIT</text>
+<text fill="#ffb86b" font-family="IBM Plex Mono" font-size="7.5" x="6" y="21">HOLDING 4 CONVOYS</text>
+</g>
+</g>
+<!-- NODE 3: PATHANKOT DEPOT (Major Base - Square Outlined) -->
+<g transform="translate(290, 310)">
+<rect fill="#0c7c83" height="16" stroke="#7bd4dc" stroke-width="2" width="16" x="-8" y="-8"></rect>
+<rect fill="#060f17" height="6" width="6" x="-3" y="-3"></rect>
+<g transform="translate(14, -8)">
+<rect fill="#060f17" height="26" stroke="#3e494a" stroke-width="1" width="128"></rect>
+<rect fill="#7bd4dc" height="26" width="3" x="0" y="0"></rect>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="9.5" font-weight="700" x="6" y="12">PATHANKOT DEPOT</text>
+<text fill="#7bd4dc" font-family="IBM Plex Mono" font-size="8" x="6" y="21">CAPACITY: 92% NOMINAL</text>
+</g>
+</g>
+<!-- NODE 4: CHANDIGARH REGIONAL DEPOT (Square marker) -->
+<g transform="translate(360, 380)">
+<rect fill="#0c7c83" height="16" stroke="#7bd4dc" stroke-width="2" width="16" x="-8" y="-8"></rect>
+<rect fill="#060f17" height="6" width="6" x="-3" y="-3"></rect>
+<g transform="translate(14, -6)">
+<rect fill="#060f17" height="26" stroke="#3e494a" stroke-width="1" width="140"></rect>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="9.5" font-weight="600" x="6" y="12">CHANDIGARH REG DEPOT</text>
+<text fill="#bdc9c9" font-family="IBM Plex Mono" font-size="8" x="6" y="21">BULK STRAT RESERVE</text>
+</g>
+</g>
+<!-- NODE 5: JAISALMER TRANSIT NODE (Western sector anchor) -->
+<g transform="translate(190, 490)">
+<rect fill="#2e4966" height="12" stroke="#aec9ec" stroke-width="1.5" transform="rotate(45)" width="12" x="-6" y="-6"></rect>
+<g transform="translate(12, -4)">
+<rect fill="#060f17" height="22" stroke="#3e494a" stroke-width="1" width="118"></rect>
+<text fill="#aec9ec" font-family="IBM Plex Sans" font-size="9" x="6" y="10">JAISALMER TRANSIT</text>
+<text fill="#bdc9c9" font-family="IBM Plex Mono" font-size="7.5" x="6" y="18">WEST SECTOR LOG STAGING</text>
+</g>
+</g>
+<!-- NORTHEAST SECTOR INSET (TAWANG FORWARD NODE) -->
+<g transform="translate(680, 20)">
+<rect fill="#141c25" height="135" stroke="#3e494a" stroke-width="1.5" width="185"></rect>
+<rect fill="#182029" height="18" width="185" x="0" y="0"></rect>
+<text fill="#ffb86b" font-family="IBM Plex Sans" font-size="9" font-weight="700" x="8" y="13">INSET // EASTERN COMMAND</text>
+<!-- Inset terrain contour -->
+<path d="M 10 110 Q 70 60 175 75" fill="none" stroke="#222b33" stroke-width="1"></path>
+<path d="M 20 85 L 90 95 L 140 60" stroke="#0c7c83" stroke-dasharray="3 3" stroke-width="2"></path>
+<!-- Tawang Forward Node with Amber Warning Ring -->
+<circle cx="140" cy="60" fill="none" r="9" stroke="#ffb86b" stroke-dasharray="2 2" stroke-width="1.2"></circle>
+<circle cx="140" cy="60" fill="#a16100" r="5" stroke="#ffb86b" stroke-width="1.5"></circle>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="9" font-weight="600" x="24" y="55">TAWANG FWD NODE</text>
+<text fill="#ffb86b" font-family="IBM Plex Mono" font-size="8" x="24" y="66">TELEMETRY DELAY: 9H</text>
+<text fill="#bdc9c9" font-family="IBM Plex Mono" font-size="7" x="24" y="75">MED CONSUMABLES LOW</text>
+<text fill="#889394" font-family="IBM Plex Mono" font-size="7.5" x="10" y="125">GRID 41R YK · BRAHMAPUTRA AXIS</text>
+</g>
+</svg>
+<!-- MAP BOTTOM OVERLAY: MILITARY LEGEND (Left) & NORTH COMPASS / SCALE (Right) -->
+<div class="absolute bottom-2 left-2 z-20 bg-surface-container-lowest/90 border border-outline-variant/40 p-2 text-on-surface-variant font-telemetry-sm text-telemetry-sm backdrop-blur-sm">
+<div class="font-label-sm text-label-sm text-on-surface uppercase font-bold tracking-wider mb-1.5 border-b border-outline-variant/30 pb-0.5">TACTICAL SYMBOLOGY</div>
+<div class="grid grid-cols-2 gap-x-3 gap-y-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 bg-primary-container border border-primary inline-block"></span>
+<span class="text-on-surface text-[11px]">Regional Depot</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error border border-error-container inline-block"></span>
+<span class="text-on-surface text-[11px]">Stock-Out Node</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rotate-45 bg-tertiary inline-block"></span>
+<span class="text-on-surface text-[11px]">Transit Node</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 bg-tertiary inline-block"></span>
+<span class="text-on-surface text-[11px]">Hazard Segment</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 z-20 flex flex-col items-end gap-1 bg-surface-container-lowest/90 border border-outline-variant/40 p-2 font-telemetry-sm text-telemetry-sm text-on-surface-variant/80 backdrop-blur-sm">
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold">▲ N</span>
+<span class="text-outline-variant">|</span>
+<div class="flex items-center gap-1">
+<div class="w-12 h-1 bg-on-surface-variant flex justify-between">
+<span class="w-0.5 h-2 bg-on-surface -mt-0.5"></span>
+<span class="w-0.5 h-2 bg-on-surface -mt-0.5"></span>
+</div>
+<span class="text-[10px] text-on-surface">100 KM / 54 NM</span>
+</div>
+</div>
+<div class="text-[9px] text-on-surface-variant/60 font-mono tracking-tight">BASE MAP: MIL-DEF-GRID-2026 // WGS-84 MGRS</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: DECISION QUEUE (5 cols on 12-col grid = ~41.7%) -->
+<div class="lg:col-span-5 flex flex-col bg-surface-container-low">
+<!-- Panel Header -->
+<div class="p-space-md border-b border-outline-variant/30 flex items-center justify-between bg-surface-container">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-error inline-block animate-pulse"></span>
+<h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-on-surface font-semibold">Decision Queue</h2>
+<span class="font-telemetry-sm text-telemetry-sm bg-error-container text-on-error-container px-1.5 py-0.2 border border-error/40 font-semibold">3 PENDING</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase">Filter:</span>
+<select class="bg-surface-container-high border border-outline-variant/40 text-on-surface font-telemetry-sm text-telemetry-sm px-1.5 py-0.5 focus:outline-none">
+<option>All Severities</option>
+<option>Critical Only</option>
+<option>Transit Delays</option>
+</select>
+</div>
+</div>
+<!-- Decision Cards Container -->
+<div class="flex-1 overflow-y-auto p-space-md space-y-space-md">
+<!-- CARD 1: CRITICAL - DIESEL STOCK-OUT -->
+<div class="bg-surface-container border border-outline-variant/40 border-l-4 border-l-error p-space-md flex flex-col gap-2.5 shadow-sm hover:border-error/60 transition-colors">
+<div class="flex items-start justify-between gap-2">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-sm text-telemetry-sm bg-error-container text-on-error-container px-1 py-0.2 font-bold uppercase tracking-wider">!CRIT ALERT</span>
+<span class="font-label-sm text-label-sm text-error uppercase font-bold tracking-wide">Diesel Stock-Out Risk</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mt-0.5">Leh Forward Node (14 Mountain Sustainment Gp)</div>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-error bg-surface-container-high px-1.5 py-0.5 border border-error/30 font-bold whitespace-nowrap">T-18h 40m</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Projected P90 surge consumption outpaces local bulk reservoir capacity before earliest replenishment window. Complete fuel exhaustion forecasted at D+1 08:10 IST.
+          </p>
+<!-- Telemetry Metric Grid -->
+<div class="grid grid-cols-3 gap-1 bg-surface-container-low p-2 border border-outline-variant/30 text-center font-telemetry-sm text-telemetry-sm">
+<div class="flex flex-col border-r border-outline-variant/20">
+<span class="text-on-surface-variant text-[10px] uppercase">Available</span>
+<span class="text-on-surface font-semibold">24,800 L</span>
+</div>
+<div class="flex flex-col border-r border-outline-variant/20">
+<span class="text-on-surface-variant text-[10px] uppercase">P90 Target</span>
+<span class="text-error font-semibold">31,400 L</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[10px] uppercase">Deficit Gap</span>
+<span class="text-error font-bold">-7h 30m</span>
+</div>
+</div>
+<!-- Confidence & Data Attestation -->
+<div class="flex items-center justify-between font-telemetry-sm text-telemetry-sm pt-0.5">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span>Model Confidence:</span>
+<span class="text-primary font-bold">82%</span>
+<span class="text-[10px] text-on-surface-variant/70">(RFID scan 38m ago)</span>
+</div>
+<span class="text-on-surface-variant/70 text-[11px]">COA-04 READY</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 pt-1 border-t border-outline-variant/20">
+<button class="flex-1 bg-primary-container text-on-primary-container font-label-md text-label-md py-1.5 px-3 uppercase font-semibold border border-primary/50 hover:bg-primary-container/80 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">conversion_path</span>
+<span>Review COA Options</span>
+</button>
+<button class="bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md py-1.5 px-3 uppercase border border-outline-variant/40 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">analytics</span>
+<span>View Basis</span>
+</button>
+</div>
+</div>
+<!-- CARD 2: WARNING - MEDICAL CONSUMABLES REPORTING LAG -->
+<div class="bg-surface-container border border-outline-variant/40 border-l-4 border-l-tertiary p-space-md flex flex-col gap-2.5 shadow-sm hover:border-tertiary/60 transition-colors">
+<div class="flex items-start justify-between gap-2">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-sm text-telemetry-sm bg-tertiary-container/40 text-tertiary px-1 py-0.2 font-bold uppercase tracking-wider">WARN ADVISORY</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wide">Reporting Delay — Med Stock</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mt-0.5">Tawang Forward Node (Eastern Sector Inset)</div>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary bg-surface-container-high px-1.5 py-0.5 border border-tertiary/30 font-bold whitespace-nowrap">Margin 26h</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Telemetry packet loss exceeding 9h. Forecast variance envelope has widened by ±38%. Blood plasma and surgical kits near conservative minimum buffer threshold.
+          </p>
+<!-- Telemetry Metric Grid -->
+<div class="grid grid-cols-3 gap-1 bg-surface-container-low p-2 border border-outline-variant/30 text-center font-telemetry-sm text-telemetry-sm">
+<div class="flex flex-col border-r border-outline-variant/20">
+<span class="text-on-surface-variant text-[10px] uppercase">Last Known</span>
+<span class="text-on-surface font-semibold">1,180 U</span>
+</div>
+<div class="flex flex-col border-r border-outline-variant/20">
+<span class="text-on-surface-variant text-[10px] uppercase">P90 Burn</span>
+<span class="text-tertiary font-semibold">1,640 U</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[10px] uppercase">Telemetry Link</span>
+<span class="text-tertiary font-bold">DEGRADED</span>
+</div>
+</div>
+<!-- Confidence & Data Attestation -->
+<div class="flex items-center justify-between font-telemetry-sm text-telemetry-sm pt-0.5">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span>Model Confidence:</span>
+<span class="text-tertiary font-bold">59%</span>
+<span class="text-[10px] text-tertiary/80">(Store &amp; Fwd Stale)</span>
+</div>
+<span class="text-on-surface-variant/70 text-[11px]">PING QUEUED</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 pt-1 border-t border-outline-variant/20">
+<button class="flex-1 bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md py-1.5 px-3 uppercase font-semibold border border-outline-variant/40 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">vital_signs</span>
+<span>Inspect Data Health</span>
+</button>
+<button class="bg-surface-container-low text-tertiary hover:bg-surface-container font-label-md text-label-md py-1.5 px-3 uppercase border border-tertiary/30 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">wifi_tethering</span>
+<span>Manual Ping</span>
+</button>
+</div>
+</div>
+<!-- CARD 3: WARNING - CONVOY ROUTE DELAY -->
+<div class="bg-surface-container border border-outline-variant/40 border-l-4 border-l-tertiary p-space-md flex flex-col gap-2.5 shadow-sm hover:border-tertiary/60 transition-colors">
+<div class="flex items-start justify-between gap-2">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-sm text-telemetry-sm bg-tertiary-container/40 text-tertiary px-1 py-0.2 font-bold uppercase tracking-wider">WARN TRANSIT</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wide">Convoy Route Delay CV-047</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mt-0.5">Srinagar - Leh Transit Corridor (Zoji-La)</div>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary bg-surface-container-high px-1.5 py-0.5 border border-tertiary/30 font-bold whitespace-nowrap">+4h 20m SLOW</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Severe snowfall at pass summit has reduced average convoy velocity to 12 km/h. Resupply arrival to Leh shifted from D+0 21:50 to D+1 02:10 IST. Directly triggers the diesel stock-out condition.
+          </p>
+<!-- Impact indicator -->
+<div class="flex items-center justify-between bg-error-container/10 border border-error/30 p-2 font-telemetry-sm text-telemetry-sm text-error">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">link_off</span>
+<span>Cascade Impact:</span>
+</span>
+<span class="font-bold">Leh POL Buffer Collapses</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 pt-1 border-t border-outline-variant/20">
+<button class="flex-1 bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md py-1.5 px-3 uppercase font-semibold border border-outline-variant/40 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">alt_route</span>
+<span>Recalculate Route (Manali Axis)</span>
+</button>
+<button class="bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md py-1.5 px-3 uppercase border border-outline-variant/40 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">local_shipping</span>
+<span>Track CV-047</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Command Execution Sticky Strip -->
+<div class="p-space-sm bg-surface-container border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant/70 uppercase">Queue Protocol: MIL-STD-188A</span>
+<button class="bg-surface-container-high text-primary hover:bg-primary-container/20 font-label-sm text-label-sm uppercase px-2 py-1 border border-primary/40 flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[14px]">checklist</span>
+<span>Acknowledge All (3)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BOTTOM ANALYTICS STRIP (3 Columns: Demand Risk / 72h Timeline / Movement Status) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 bg-surface-container-low">
+<!-- COL 1: DEMAND RISK BY CATEGORY (Progressive hairline horizontal bars) -->
+<div class="p-space-md border-r border-b lg:border-b-0 border-outline-variant/30 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3 border-b border-outline-variant/30 pb-1.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">donut_large</span>
+<h3 class="font-headline-sm text-headline-sm uppercase tracking-wide text-on-surface font-semibold">Demand Risk by Category</h3>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant/70">STOCK VS P90 (72H)</span>
+</div>
+<div class="space-y-3 font-telemetry-sm text-telemetry-sm">
+<!-- Item 1: Diesel -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-on-surface font-medium">Diesel / POL (Class III)</span>
+<span class="text-error font-bold">68% [CRITICAL DEFICIT]</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-error" style="width: 68%;"></div>
+</div>
+</div>
+<!-- Item 2: Medical Consumables -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-on-surface font-medium">Medical Consumables (Class VIII)</span>
+<span class="text-error font-bold">54% [BUFFER EXHAUSTION]</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-error" style="width: 54%;"></div>
+</div>
+</div>
+<!-- Item 3: Spare Parts -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-on-surface font-medium">Armour / Vehicle Spares (Class IX)</span>
+<span class="text-tertiary font-bold">73% [AT WATCH MARGIN]</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 73%;"></div>
+</div>
+</div>
+<!-- Item 4: Controlled Stores -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-on-surface font-medium">Controlled Stores / Ammo (Class V)</span>
+<span class="text-primary font-bold">79% [STABLE]</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary" style="width: 79%;"></div>
+</div>
+</div>
+<!-- Item 5: Rations -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-on-surface font-medium">Combat Rations / Water (Class I)</span>
+<span class="text-primary font-bold">91% [NOMINAL]</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary" style="width: 91%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>AGGREGATE SYSTEM COVERAGE: 73.0%</span>
+<button class="text-primary hover:underline flex items-center gap-0.5">
+<span>Detailed Ledger</span>
+<span class="material-symbols-outlined text-[13px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- COL 2: SUPPLY COVERAGE TIMELINE (Next 72 Hours) -->
+<div class="p-space-md border-r border-b lg:border-b-0 border-outline-variant/30 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3 border-b border-outline-variant/30 pb-1.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">hourglass_bottom</span>
+<h3 class="font-headline-sm text-headline-sm uppercase tracking-wide text-on-surface font-semibold">Supply Coverage (Next 72h)</h3>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant/70">RESUPPLY SYNC WINDOWS</span>
+</div>
+<!-- Integrated Visual Timeline Matrix -->
+<div class="space-y-4">
+<!-- Time Interval Scale -->
+<div class="grid grid-cols-5 text-center font-telemetry-sm text-telemetry-sm text-on-surface-variant border-b border-outline-variant/30 pb-1">
+<span>+12h</span>
+<span>+24h</span>
+<span>+36h</span>
+<span>+48h</span>
+<span>+72h</span>
+</div>
+<!-- Track 1: Leh Forward Node -->
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span class="font-semibold">Leh Sector Resupply Track</span>
+<span class="text-error font-mono">Stock-Out @ 18h 40m</span>
+</div>
+<div class="relative w-full h-5 bg-surface-container-high border border-outline-variant/30">
+<!-- Available stock duration (0 to 18.6h out of 72h = 25.8%) -->
+<div class="absolute left-0 top-0 bottom-0 bg-primary/30 border-r-2 border-r-error" style="width: 26%;">
+<span class="text-[9px] text-on-surface font-mono pl-1 leading-5">STOCK ON HAND</span>
+</div>
+<!-- Deficit gap (18.6h to 26h = ~10.2%) -->
+<div class="absolute top-0 bottom-0 bg-error/20 border-r-2 border-r-tertiary" style="left: 26%; width: 11%;">
+<span class="text-[8px] text-error font-mono leading-5 block text-center uppercase font-bold">CRIT GAP</span>
+</div>
+<!-- Resupply arrival CV-047 (at 26h onwards) -->
+<div class="absolute top-0 bottom-0 bg-primary-container/80" style="left: 37%; right: 0;">
+<span class="text-[9px] text-on-primary-container font-mono pl-2 leading-5">CV-047 ARRIVAL (+26H)</span>
+</div>
+</div>
+</div>
+<!-- Track 2: Tawang Sector -->
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span class="font-semibold">Tawang Resupply Track</span>
+<span class="text-tertiary font-mono">Depletion Window @ 26h</span>
+</div>
+<div class="relative w-full h-5 bg-surface-container-high border border-outline-variant/30">
+<!-- Available stock -->
+<div class="absolute left-0 top-0 bottom-0 bg-primary/30 border-r-2 border-r-tertiary" style="width: 36%;">
+<span class="text-[9px] text-on-surface font-mono pl-1 leading-5">BUFFER DISSIPATING</span>
+</div>
+<!-- Resupply window -->
+<div class="absolute top-0 bottom-0 bg-primary-container/80" style="left: 48%; right: 0;">
+<span class="text-[9px] text-on-primary-container font-mono pl-2 leading-5">AIR-SURGE CONVOY (+35H)</span>
+</div>
+</div>
+</div>
+<!-- Track 3: 09 Forward Support Axis -->
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span class="font-semibold">09 Fwd Support Formation</span>
+<span class="text-primary font-mono">Sustained Nominal (+72h)</span>
+</div>
+<div class="relative w-full h-5 bg-surface-container-high border border-outline-variant/30">
+<div class="absolute inset-0 bg-primary/20 flex items-center px-2">
+<span class="text-[9px] text-primary font-mono">CONTINUOUS INTER-DEPOT SHUTTLE ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<span>RESUPPLY VARIANCE MARGIN: ±1.8H</span>
+<span class="text-tertiary font-medium">SIM RUN 04B: STOCHASTIC P50</span>
+</div>
+</div>
+<!-- COL 3: ACTIVE MOVEMENT STATUS (High-density tabular ledger) -->
+<div class="p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3 border-b border-outline-variant/30 pb-1.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">route</span>
+<h3 class="font-headline-sm text-headline-sm uppercase tracking-wide text-on-surface font-semibold">Active Movement Status</h3>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm text-secondary">4 MONITORED</span>
+</div>
+<!-- High-Density Telemetry Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-telemetry-sm text-telemetry-sm border-collapse">
+<thead>
+<tr class="text-on-surface-variant border-b border-outline-variant/30 text-[10px] uppercase">
+<th class="py-1">ID</th>
+<th class="py-1">Route Corridor</th>
+<th class="py-1">Manifest</th>
+<th class="py-1 text-right">Status / ETA</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1: CV-047 (Delayed) -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2 text-tertiary font-bold">CV-047</td>
+<td class="py-2 text-on-surface font-sans">
+<span>Pathankot › Leh</span>
+<span class="block text-[10px] text-on-surface-variant font-mono">Zoji-La chokepoint</span>
+</td>
+<td class="py-2 text-on-surface-variant">Diesel / Water</td>
+<td class="py-2 text-right">
+<span class="text-error font-bold bg-error-container/20 px-1 py-0.5 border border-error/30">+4h 20m DLY</span>
+</td>
+</tr>
+<!-- Row 2: CV-052 -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2 text-primary font-bold">CV-052</td>
+<td class="py-2 text-on-surface font-sans">
+<span>Chandigarh › SXR</span>
+<span class="block text-[10px] text-on-surface-variant font-mono">NH-44 Axis</span>
+</td>
+<td class="py-2 text-on-surface-variant">Medical / Rations</td>
+<td class="py-2 text-right">
+<span class="text-tertiary font-medium bg-tertiary-container/20 px-1 py-0.5 border border-tertiary/30">AWAIT DISPATCH</span>
+</td>
+</tr>
+<!-- Row 3: CV-061 -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2 text-primary font-bold">CV-061</td>
+<td class="py-2 text-on-surface font-sans">
+<span>Jaisalmer › Fwd Supp</span>
+<span class="block text-[10px] text-on-surface-variant font-mono">Thar West Sector</span>
+</td>
+<td class="py-2 text-on-surface-variant">Armour Spares</td>
+<td class="py-2 text-right">
+<span class="text-secondary font-medium">ROUTE REVIEW</span>
+</td>
+</tr>
+<!-- Row 4: CV-066 -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2 text-primary font-bold">CV-066</td>
+<td class="py-2 text-on-surface font-sans">
+<span>Pathankot › Leh</span>
+<span class="block text-[10px] text-on-surface-variant font-mono">Staging Unit 2</span>
+</td>
+<td class="py-2 text-on-surface-variant">Controlled Stores</td>
+<td class="py-2 text-right">
+<span class="text-primary font-bold">ON SCHEDULE</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>17 TOTAL CONVOYS IN OPERATION</span>
+<button class="text-primary hover:underline flex items-center gap-0.5 font-telemetry-sm text-telemetry-sm">
+<span>Manage Convoys</span>
+<span class="material-symbols-outlined text-[13px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- PERSISTENT FOOTER UTILITY STRIP -->
+<div class="bg-surface-container-lowest border-t border-outline-variant/30 px-space-lg py-2 flex flex-wrap items-center justify-between gap-space-sm text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+<span>DEFENCE SECURE NETWORK // ENCRYPTION AES-256-GCM</span>
+</span>
+<span class="text-outline-variant">|</span>
+<span>NODE: TAC-UDHAMPUR-SMR-01</span>
+<span class="text-outline-variant">|</span>
+<span>RESTRICTED LOGISTICS ACCESS LEVEL-3</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="text-on-surface-variant/70">LAST TELEMETRY PACKET: 17:29:48 IST [DELTA: 12s]</span>
+<button class="text-primary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+<span>Force Resync</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Inline micro-interactions script for simulation controls and row highlights -->

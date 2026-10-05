@@ -1,0 +1,612 @@
+<div class="flex flex-col w-full relative select-none">
+<!-- Sub-Header Command Context Banner -->
+<div class="w-full bg-surface-container-low border-b border-outline-variant/30 px-space-md py-1.5 flex flex-wrap items-center justify-between gap-space-sm z-30">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]">satellite_alt</span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-on-surface">Forward Supply Map</span>
+</div>
+<span class="text-outline-variant">|</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant truncate">Common Operating GIS Picture · Northern &amp; Western Sector | 1:250,000 Tactical View</span>
+<span class="bg-surface-container-high px-1.5 py-0.5 font-telemetry-sm text-telemetry-sm text-primary border border-primary/30">MGRS 43V-DN-8271</span>
+</div>
+<div class="flex items-center gap-space-md font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-1.5 bg-surface-container-highest px-2 py-0.5 border border-outline-variant/40">
+<span class="w-2 h-2 rounded-none bg-error animate-ping"></span>
+<span class="text-error font-semibold">1 CRIT HALO [LEH-04]</span>
+</div>
+<div class="hidden md:flex items-center gap-2 text-on-surface-variant">
+<span>PROJ: WGS-84 / UTM 43N</span>
+<span class="text-outline-variant">·</span>
+<span>CACHE: 450 KM RADIUS</span>
+<span class="text-primary font-mono">[READY]</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-0.5 bg-surface-container hover:bg-surface-container-high text-on-surface border border-outline-variant/30 flex items-center gap-1" id="btn-recenter">
+<span class="material-symbols-outlined text-[14px]">center_focus_strong</span>
+<span>RECENTER</span>
+</button>
+<button class="px-2 py-0.5 bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary border border-primary/40 flex items-center gap-1" id="btn-toggle-drawer">
+<span class="material-symbols-outlined text-[14px]">dock_to_left</span>
+<span>INSPECT NODE</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary Tactical GIS Canvas & Split Layers Container -->
+<div class="relative w-full h-[calc(100vh-138px)] bg-[#0b1218] overflow-hidden flex">
+<!-- Vector Tactical Cartography Stage (Simulated Defense Geo Canvas) -->
+<div class="relative w-full h-full cursor-crosshair overflow-hidden" id="gis-viewport">
+<!-- High-resolution elevation relief & tactical map layer with data-location -->
+<div class="absolute inset-0 w-full h-full opacity-35 mix-blend-luminosity filter contrast-125 saturate-50 pointer-events-none" data-location="Ladakh, India" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD22ZOrLtOXi5p8rUdybrn5cRHBvc3YU6gp2-dq8ZoU8olHgkA22sIIaPSodJ2o6tFHW9D8as3C6hhngkOgRCmVJc6SD6HaRQGf03iBqyk4IIiT1XFwOIEPZOJnq-V-strDuD_I75ml_dLHYOk57xNQtsP0CmHw4nPldr_WIVSwv3ZbcU07MXfCf9zlwvqA-DcDIMyQKA_3DZlqCILp0AnuRDADHB8_ItcGkPphVoHf26FjTfJXoetU')"></div>
+<!-- Tactical SVG Overlays: Corridors, Contours, Hazardous Chokepoints, Formations, and Assets -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="xMidYMid slice" viewbox="0 0 1600 900">
+<defs>
+<!-- Hazard Hatch Pattern for Pass Icing / Blocked Corridors -->
+<pattern height="12" id="hazardHatch" patterntransform="rotate(45 0 0)" patternunits="userSpaceOnUse" width="12">
+<line stroke="#ffb4ab" stroke-opacity="0.75" stroke-width="3" x1="0" x2="0" y1="0" y2="12"></line>
+<line stroke="#ffb86b" stroke-opacity="0.6" stroke-width="1.5" x1="6" x2="6" y1="0" y2="12"></line>
+</pattern>
+<!-- Stockout Hazard Radial Gradient -->
+<radialgradient cx="50%" cy="50%" id="critGlow" r="50%">
+<stop offset="0%" stop-color="#ffb4ab" stop-opacity="0.6"></stop>
+<stop offset="40%" stop-color="#93000a" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#93000a" stop-opacity="0"></stop>
+</radialgradient>
+<radialgradient cx="50%" cy="50%" id="amberGlow" r="50%">
+<stop offset="0%" stop-color="#ffb86b" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#a16100" stop-opacity="0"></stop>
+</radialgradient>
+<!-- Marker Chevron Indicator -->
+<marker id="chevron-teal" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="5" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1 L 6 5 L 0 9 z" fill="#7bd4dc"></path>
+</marker>
+<marker id="chevron-slate" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="5" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1 L 6 5 L 0 9 z" fill="#aec9ec"></path>
+</marker>
+</defs>
+<!-- Coordinate Grid Haillines -->
+<g stroke="#3e494a" stroke-dasharray="3 6" stroke-opacity="0.35" stroke-width="0.5">
+<line x1="100" x2="100" y1="0" y2="900"></line>
+<line x1="300" x2="300" y1="0" y2="900"></line>
+<line x1="500" x2="500" y1="0" y2="900"></line>
+<line x1="700" x2="700" y1="0" y2="900"></line>
+<line x1="900" x2="900" y1="0" y2="900"></line>
+<line x1="1100" x2="1100" y1="0" y2="900"></line>
+<line x1="1300" x2="1300" y1="0" y2="900"></line>
+<line x1="1500" x2="1500" y1="0" y2="900"></line>
+<line x1="0" x2="1600" y1="150" y2="150"></line>
+<line x1="0" x2="1600" y1="300" y2="300"></line>
+<line x1="0" x2="1600" y1="450" y2="450"></line>
+<line x1="0" x2="1600" y1="600" y2="600"></line>
+<line x1="0" x2="1600" y1="750" y2="750"></line>
+</g>
+<!-- Contour lines of Himalayan Terrain & Western Rim -->
+<g fill="none" stroke="#2d363e" stroke-opacity="0.65" stroke-width="1">
+<path d="M 420 110 Q 560 90, 710 140 T 930 130 T 1150 90 T 1380 180"></path>
+<path d="M 450 170 Q 610 160, 750 200 T 980 190 T 1200 160 T 1420 230"></path>
+<path d="M 390 230 Q 580 240, 720 280 T 940 270 T 1140 240 T 1360 290"></path>
+<path d="M 320 320 Q 500 350, 680 340 T 890 350 T 1070 330 T 1250 360"></path>
+<path d="M 280 430 Q 420 460, 600 440 T 830 460 T 1020 430"></path>
+<path d="M 220 540 Q 370 560, 520 530 T 730 560"></path>
+</g>
+<!-- Translucent Operational Zones -->
+<!-- 14 Mountain Sustainment Group (Northern Ladakh) -->
+<polygon fill="#0c7c83" fill-opacity="0.08" points="680,80 980,60 1080,260 760,290" stroke="#7bd4dc" stroke-dasharray="4 4" stroke-width="1"></polygon>
+<text fill="#7bd4dc" font-family="IBM Plex Mono" font-size="11" letter-spacing="0.1em" opacity="0.8" x="800" y="105">14 MTN SUSTAINMENT GROUP [AOR-NORTH]</text>
+<!-- 9 Forward Support Formation (Jammu & Pathankot axis) -->
+<polygon fill="#2e4966" fill-opacity="0.12" points="460,290 730,270 710,480 430,460" stroke="#aec9ec" stroke-dasharray="4 4" stroke-width="1"></polygon>
+<text fill="#aec9ec" font-family="IBM Plex Mono" font-size="11" letter-spacing="0.08em" opacity="0.8" x="475" y="320">9 FWD SUPPORT FORMATION [SECTOR-BRAVO]</text>
+<!-- Offline Cache Radius Guideline Boundary (450km radius indicator) -->
+<circle cx="890" cy="180" fill="none" r="390" stroke="#7bd4dc" stroke-dasharray="8 6" stroke-opacity="0.25" stroke-width="1"></circle>
+<text fill="#7bd4dc" font-family="IBM Plex Mono" font-size="10" opacity="0.6" text-anchor="middle" x="890" y="580">OFFLINE CACHED BOUNDARY RADIUS: 450 KM · EX PIR PANJAL TO KARAKORAM</text>
+<!-- Sustainment Movement Corridors -->
+<!-- Alternate Route: Manali - Leh Highway (Indigo Slate) -->
+<path d="M 640 450 L 730 380 L 810 320 L 850 250 L 890 180" fill="none" id="route-manali" marker-mid="url(#chevron-slate)" opacity="0.85" stroke="#aec9ec" stroke-dasharray="6 4" stroke-linecap="square" stroke-width="3"></path>
+<!-- Primary Route: NH-1D Strategic Corridor (Teal Steel) -->
+<path d="M 440 380 L 520 330 L 610 270 L 710 220 L 800 210 L 890 180" fill="none" id="route-nh1d" stroke="#0c7c83" stroke-linecap="square" stroke-width="4.5"></path>
+<path d="M 440 380 L 520 330 L 610 270 L 710 220 L 800 210 L 890 180" fill="none" stroke="#7bd4dc" stroke-dasharray="10 8" stroke-width="1.5"></path>
+<!-- Route to Tawang corridor branch (Eastern Inset Axis) -->
+<path d="M 1180 320 L 1260 260 L 1340 210" fill="none" opacity="0.85" stroke="#ffb86b" stroke-dasharray="4 3" stroke-width="2.5"></path>
+<!-- Western Sector Rail/Road Supply Corridor (Punjab / Rajasthan Link) -->
+<path d="M 440 380 L 390 510 L 320 640 L 290 730" fill="none" opacity="0.6" stroke="#aec9ec" stroke-width="2.5"></path>
+<!-- Weather / Hazard Zone (Zojila - Fotu La Pass Sector) -->
+<polygon fill="url(#hazardHatch)" points="660,195 760,185 790,240 680,250" stroke="#ffb4ab" stroke-width="1.5"></polygon>
+<rect fill="#141c25" height="24" stroke="#ffb4ab" stroke-width="1" width="220" x="670" y="254"></rect>
+<text fill="#ffb4ab" font-family="IBM Plex Mono" font-size="10" font-weight="600" x="676" y="270">PASS ICING // SPD RESTRICT 15 KM/H</text>
+<!-- Critical Halos around Nodes -->
+<!-- Leh Node Pulsing Vermilion Halo -->
+<circle class="animate-pulse" cx="890" cy="180" fill="url(#critGlow)" r="48"></circle>
+<circle cx="890" cy="180" fill="none" r="32" stroke="#ffb4ab" stroke-dasharray="2 3" stroke-width="1"></circle>
+<!-- Tawang Node Alert Halo -->
+<circle cx="1340" cy="210" fill="url(#amberGlow)" r="28"></circle>
+<!-- Tactical Nodes & Hub Glyphs -->
+<!-- Chandigarh Regional Depot (Square Outlined) -->
+<g class="cursor-pointer group" transform="translate(630, 440)">
+<rect fill="#141c25" height="24" stroke="#aec9ec" stroke-width="2" width="24" x="-12" y="-12"></rect>
+<rect fill="#2e4966" height="12" width="12" x="-6" y="-6"></rect>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="12" font-weight="600" x="18" y="4">Chandigarh Main Base Depot</text>
+<text fill="#bdc9c9" font-family="IBM Plex Mono" font-size="10" x="18" y="16">DEP-CHD-01 · 94% POL CAP</text>
+</g>
+<!-- Pathankot Depot (Square Outlined) -->
+<g class="cursor-pointer group" transform="translate(440, 380)">
+<rect fill="#141c25" height="22" stroke="#7bd4dc" stroke-width="2" width="22" x="-11" y="-11"></rect>
+<rect fill="#0c7c83" height="10" width="10" x="-5" y="-5"></rect>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="12" font-weight="600" x="16" y="2">Pathankot Forward Depot</text>
+<text fill="#7bd4dc" font-family="IBM Plex Mono" font-size="10" x="16" y="14">DEP-PTK-02 · RAILHEAD TERM</text>
+</g>
+<!-- Srinagar Transit Node (Diamond Marker) -->
+<g class="cursor-pointer group" transform="translate(520, 330)">
+<polygon fill="#141c25" points="0,-10 10,0 0,10 -10,0" stroke="#aec9ec" stroke-width="1.5"></polygon>
+<polygon fill="#aec9ec" points="0,-5 5,0 0,5 -5,0"></polygon>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="11" font-weight="500" x="14" y="3">Srinagar Transit Node</text>
+<text fill="#bdc9c9" font-family="IBM Plex Mono" font-size="9" x="14" y="14">TRN-SXR-09</text>
+</g>
+<!-- Jaisalmer Transit Node (Western Rim) -->
+<g class="cursor-pointer group" transform="translate(290, 730)">
+<polygon fill="#141c25" points="0,-9 9,0 0,9 -9,0" stroke="#ffb86b" stroke-width="1.5"></polygon>
+<polygon fill="#ffb86b" points="0,-4 4,0 0,4 -4,0"></polygon>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="11" font-weight="500" x="14" y="2">Jaisalmer Support Node</text>
+<text fill="#ffb86b" font-family="IBM Plex Mono" font-size="9" x="14" y="13">TRN-JSM-03 · DESERT SECTOR</text>
+</g>
+<!-- Tawang Forward Node (Circular Amber) -->
+<g class="cursor-pointer group" transform="translate(1340, 210)">
+<circle cx="0" cy="0" fill="#141c25" r="9" stroke="#ffb86b" stroke-width="2"></circle>
+<circle cx="0" cy="0" fill="#ffb86b" r="4.5"></circle>
+<text fill="#dae3ef" font-family="IBM Plex Sans" font-size="12" font-weight="600" x="16" y="2">Tawang Forward Node</text>
+<text fill="#ffb86b" font-family="IBM Plex Mono" font-size="10" x="16" y="14">FWD-TWG-01 · 2.1D RESV</text>
+</g>
+<!-- Leh Forward Node (ACTIVE TARGET SELECTION - Vermilion Alert) -->
+<g class="cursor-pointer" id="node-leh-marker" transform="translate(890, 180)">
+<!-- Selection Reticle Hairlines -->
+<circle cx="0" cy="0" fill="none" r="16" stroke="#7bd4dc" stroke-dasharray="4 2" stroke-width="1.5"></circle>
+<circle cx="0" cy="0" fill="#ffb4ab" r="8" stroke="#690005" stroke-width="1.5"></circle>
+<circle cx="0" cy="0" fill="#690005" r="3"></circle>
+<!-- Tactical Callout Flag -->
+<line stroke="#ffb4ab" stroke-width="1.5" x1="12" x2="36" y1="-12" y2="-36"></line>
+<line stroke="#ffb4ab" stroke-width="1.5" x1="36" x2="190" y1="-36" y2="-36"></line>
+<rect fill="#141c25" height="26" stroke="#ffb4ab" stroke-width="1" width="168" x="36" y="-62"></rect>
+<text fill="#ffb4ab" font-family="IBM Plex Sans" font-size="11" font-weight="700" x="44" y="-45">LEH FORWARD [CRITICAL]</text>
+<text fill="#dae3ef" font-family="IBM Plex Mono" font-size="10" x="44" y="-24">STOCK-OUT IN 18h 40m</text>
+</g>
+<!-- Dynamic Convoys in Transit -->
+<!-- Convoy CV-047 (Delayed in Choke Zone near Kargil-Drass pass) -->
+<g class="cursor-pointer" transform="translate(710, 220)">
+<rect fill="#93000a" height="14" stroke="#ffb4ab" stroke-width="1.5" width="16" x="-8" y="-7"></rect>
+<path d="M -4 -2 L 4 -2 M -4 1 L 4 1" stroke="#ffdad6" stroke-width="1"></path>
+<rect fill="#141c25" height="18" stroke="#ffb4ab" stroke-width="1" width="104" x="-12" y="11"></rect>
+<text fill="#ffdad6" font-family="IBM Plex Mono" font-size="9" font-weight="600" x="-6" y="23">CV-047 [DELAY +4h20m]</text>
+</g>
+<!-- Convoy CV-066 (En Route on Lower NH-1D Sector) -->
+<g class="cursor-pointer" transform="translate(565, 300)">
+<rect fill="#0c7c83" height="12" stroke="#7bd4dc" stroke-width="1" width="14" x="-7" y="-6"></rect>
+<circle cx="0" cy="0" fill="#d6fcff" r="1.5"></circle>
+<rect fill="#141c25" height="16" stroke="#7bd4dc" stroke-width="1" width="94" x="-10" y="9"></rect>
+<text fill="#d6fcff" font-family="IBM Plex Mono" font-size="9" x="-4" y="20">CV-066 [ON-TIME]</text>
+</g>
+<!-- Convoy CV-052 (Loading near Chandigarh) -->
+<g transform="translate(645, 420)">
+<rect fill="#2e4966" height="10" stroke="#aec9ec" stroke-width="1" width="12" x="-6" y="-5"></rect>
+<text fill="#aec9ec" font-family="IBM Plex Mono" font-size="9" x="10" y="4">CV-052 [STAGING]</text>
+</g>
+</svg>
+<!-- Tactical Map Corner HUD Displays -->
+<!-- Top Right: Scale Bar, Bearing Compass, Classification Stamp -->
+<div class="absolute top-space-md right-space-md flex flex-col items-end gap-space-xs pointer-events-none z-20">
+<div class="bg-surface-container-low/90 backdrop-blur-sm border border-outline-variant/40 p-2 flex items-center gap-3">
+<!-- Mini Compass Indicator -->
+<div class="w-8 h-8 relative flex items-center justify-center border border-outline-variant/40 bg-surface-container-lowest">
+<span class="font-telemetry-sm text-[9px] text-primary absolute -top-1">N</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">navigation</span>
+<span class="font-telemetry-sm text-[8px] text-on-surface-variant absolute -bottom-1">352°</span>
+</div>
+<!-- Scale Metric -->
+<div class="flex flex-col items-end font-telemetry-sm text-telemetry-sm">
+<span class="text-on-surface text-[10px]">TACTICAL SCALE</span>
+<div class="flex items-center gap-1 mt-0.5">
+<div class="w-16 h-1.5 bg-outline-variant relative">
+<div class="w-8 h-full bg-primary"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant">50 KM</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 px-2 py-0.5 border border-outline-variant/30 text-[9px] font-telemetry-sm text-outline tracking-wider">
+          SIMULATED GIS BASEMAP · NOT CLASSIFIED · EX TRISHUL
+        </div>
+</div>
+<!-- Bottom-Left Crosshair Real-time Coordinate Bar -->
+<div class="absolute bottom-space-md left-space-md pointer-events-none z-20 flex items-center gap-2 bg-surface-container-low/90 border border-outline-variant/30 px-2.5 py-1 text-telemetry-sm font-telemetry-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">my_location</span>
+<span>LAT: 34°09'14" N</span>
+<span class="text-outline-variant">|</span>
+<span>LON: 77°34'38" E</span>
+<span class="text-outline-variant">|</span>
+<span>ELEV: 3,514m</span>
+<span class="text-outline-variant">|</span>
+<span class="text-tertiary">GRID: LADAKH-NORTH</span>
+</div>
+<!-- ========================================================= -->
+<!-- 2. LEFT FLOATING LAYER CONTROL PANEL (Collapsible Rail)   -->
+<!-- ========================================================= -->
+<aside class="absolute top-space-md left-space-md bottom-16 w-64 bg-surface-container-low/95 border border-outline-variant/40 z-30 flex flex-col backdrop-blur-md transition-transform duration-200" id="layer-control-panel">
+<!-- Panel Title -->
+<div class="p-space-sm bg-surface-container border-b border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">layers</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">GIS Layer Controls</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" id="btn-collapse-layers">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+</div>
+<!-- Formation Filter Selector -->
+<div class="p-space-sm border-b border-outline-variant/20 bg-surface-container-lowest/50">
+<label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Sector Formation Filter</label>
+<div class="relative">
+<select class="w-full bg-surface-container border border-outline-variant/40 text-on-surface text-label-sm px-2 py-1.5 appearance-none focus:outline-none focus:border-primary">
+<option selected="">14 Mountain Sustainment Group</option>
+<option>9 Forward Support Formation</option>
+<option>Desert Strike Supply Wing</option>
+<option>All Northern Formations</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-[14px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Layer Checkboxes Matrix -->
+<div class="flex-1 overflow-y-auto p-space-sm space-y-2 text-label-sm font-label-sm">
+<div class="text-[10px] uppercase font-telemetry-sm text-outline tracking-wider pt-1">Active Map Tiers</div>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer">
+<span class="flex items-center gap-2 text-on-surface">
+<input checked="" class="accent-primary rounded-none w-3.5 h-3.5 bg-surface-container" type="checkbox"/>
+<span>Depots &amp; Hubs</span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary">8 Act</span>
+</label>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer">
+<span class="flex items-center gap-2 text-on-surface">
+<input checked="" class="accent-primary rounded-none w-3.5 h-3.5 bg-surface-container" type="checkbox"/>
+<span>Forward Nodes</span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary">14 Act</span>
+</label>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer">
+<span class="flex items-center gap-2 text-on-surface">
+<input checked="" class="accent-primary rounded-none w-3.5 h-3.5 bg-surface-container" type="checkbox"/>
+<span>Active Convoys</span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-secondary">17 Trk</span>
+</label>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer bg-error-container/20 border-l-2 border-error">
+<span class="flex items-center gap-2 text-on-error-container font-medium">
+<input checked="" class="accent-error rounded-none w-3.5 h-3.5" type="checkbox"/>
+<span>Stock Shortfall Rings</span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-error">3 Crit</span>
+</label>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer">
+<span class="flex items-center gap-2 text-tertiary">
+<input checked="" class="accent-tertiary rounded-none w-3.5 h-3.5" type="checkbox"/>
+<span>Route Hazard Sectors</span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-tertiary">2 Alert</span>
+</label>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer">
+<span class="flex items-center gap-2 text-on-surface-variant">
+<input checked="" class="accent-primary rounded-none w-3.5 h-3.5" type="checkbox"/>
+<span>Snowpack &amp; Pass Radar</span>
+</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">cloudy_snowing</span>
+</label>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer opacity-50">
+<span class="flex items-center gap-2 text-on-surface-variant">
+<input class="rounded-none w-3.5 h-3.5" disabled="" type="checkbox"/>
+<span>Satellite Imagery</span>
+</span>
+<span class="font-telemetry-sm text-[9px] text-outline">OFFLINE</span>
+</label>
+<label class="flex items-center justify-between p-1 hover:bg-surface-container/60 cursor-pointer">
+<span class="flex items-center gap-2 text-on-surface-variant">
+<input checked="" class="accent-primary rounded-none w-3.5 h-3.5" type="checkbox"/>
+<span>Offline Cache Radius</span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-primary">450 km</span>
+</label>
+<!-- Route Comparison Options -->
+<div class="pt-2 border-t border-outline-variant/30 mt-2">
+<div class="text-[10px] uppercase font-telemetry-sm text-outline tracking-wider mb-1.5">Route Vector Mode</div>
+<div class="flex items-center justify-between bg-surface-container p-1 border border-outline-variant/20">
+<span class="text-on-surface">Planned vs. Actual</span>
+<button class="w-8 h-4 bg-primary-container p-0.5 relative transition-colors" id="toggle-planned-routes">
+<div class="w-3 h-3 bg-on-primary-container ml-auto"></div>
+</button>
+</div>
+</div>
+</div>
+<!-- Rail Footer Quick Status -->
+<div class="p-space-xs bg-surface-container-lowest border-t border-outline-variant/30 text-telemetry-sm font-telemetry-sm text-on-surface-variant flex items-center justify-between">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+<span>GRID SYNC</span>
+</span>
+<span class="text-on-surface font-mono">17:28 IST</span>
+</div>
+</aside>
+<!-- ========================================================= -->
+<!-- 3. RIGHT DETAIL DRAWER: "Leh Forward Node" (FWD-LEH-04)   -->
+<!-- ========================================================= -->
+<aside class="absolute top-0 right-0 bottom-16 w-full max-w-[390px] bg-surface-container-low border-l border-outline-variant/40 z-40 flex flex-col shadow-2xl transition-transform duration-300" id="node-detail-drawer">
+<!-- Header -->
+<div class="p-space-md bg-surface-container border-b border-outline-variant/40 flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 bg-error"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Leh Forward Node</span>
+</div>
+<div class="font-telemetry-sm text-telemetry-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>FWD-LEH-04</span>
+<span>·</span>
+<span>Ladakh Sector (Elev 3,500m)</span>
+</div>
+</div>
+<button class="p-1 hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface" id="btn-close-drawer">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Alert Callout Tag -->
+<div class="flex items-center justify-between bg-error-container text-on-error-container px-2 py-1 border-l-2 border-error">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-error">error</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wider">CRITICAL SHORTFALL IMMINENT</span>
+</div>
+<span class="font-telemetry-sm text-telemetry-sm font-bold bg-surface-container-lowest px-1 text-error">18h 40m</span>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 gap-1 text-telemetry-sm font-telemetry-sm bg-surface-container-lowest/80 p-2 border border-outline-variant/20">
+<div>
+<span class="text-outline block text-[9px] uppercase">Commander</span>
+<span class="text-on-surface font-medium truncate block">Col. V. Rawat</span>
+</div>
+<div>
+<span class="text-outline block text-[9px] uppercase">Telemetry Link</span>
+<span class="text-tertiary flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<span>UHF Store-Fwd (38m)</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Scrollable Telemetry Ledger -->
+<div class="flex-1 overflow-y-auto p-space-md space-y-space-md">
+<!-- Section 1: Inventory Health Summary -->
+<div>
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/20 mb-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Inventory Health Matrix</span>
+<span class="font-telemetry-sm text-telemetry-sm text-outline">P90 METRICS</span>
+</div>
+<div class="space-y-2">
+<!-- Item: Diesel POL (Critical) -->
+<div class="p-2 bg-surface-container border-l-2 border-error border-y border-r border-outline-variant/20">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-error">local_gas_station</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Diesel Fuel (POL)</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm px-1 font-semibold uppercase">[CRITICAL]</span>
+</div>
+<div class="flex items-baseline justify-between font-telemetry-sm text-telemetry-sm">
+<span class="text-on-surface text-telemetry-md font-semibold">24,800 L</span>
+<span class="text-error font-medium">Coverage: 1.5 Days</span>
+</div>
+<!-- Stock Level Progress Bar -->
+<div class="w-full h-1.5 bg-surface-container-lowest mt-1.5 relative overflow-hidden">
+<div class="h-full bg-error" style="width: 22%"></div>
+<!-- Safety threshold indicator marker -->
+<div class="absolute top-0 bottom-0 left-[45%] w-0.5 bg-outline" title="P50 Min Reserve"></div>
+</div>
+<div class="flex items-center justify-between mt-1 text-[10px] font-telemetry-sm text-on-surface-variant">
+<span>Burn Rate: 1,320 L/day</span>
+<span class="text-error font-semibold">Exhaustion: D+0 12:10 IST</span>
+</div>
+</div>
+<!-- Item: Water Purification -->
+<div class="p-2 bg-surface-container border-l-2 border-primary border-y border-r border-outline-variant/20">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">water_drop</span>
+<span class="font-label-md text-label-md text-on-surface">Water Purification Kits</span>
+</div>
+<span class="text-primary text-label-sm uppercase font-mono">[NOMINAL]</span>
+</div>
+<div class="flex items-baseline justify-between font-telemetry-sm text-telemetry-sm">
+<span class="text-on-surface font-semibold">1,420 Units</span>
+<span class="text-on-surface-variant">Coverage: 4.8 Days</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest mt-1.5">
+<div class="h-full bg-primary" style="width: 68%"></div>
+</div>
+</div>
+<!-- Item: Extreme Cold Clothing -->
+<div class="p-2 bg-surface-container border-l-2 border-primary border-y border-r border-outline-variant/20">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">ac_unit</span>
+<span class="font-label-md text-label-md text-on-surface">ECC Specialist Sets</span>
+</div>
+<span class="text-primary text-label-sm uppercase font-mono">[NOMINAL]</span>
+</div>
+<div class="flex items-baseline justify-between font-telemetry-sm text-telemetry-sm">
+<span class="text-on-surface font-semibold">3,200 Sets</span>
+<span class="text-on-surface-variant">Coverage: 12.0 Days</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest mt-1.5">
+<div class="h-full bg-primary-container" style="width: 88%"></div>
+</div>
+</div>
+<!-- Item: Controlled Stores -->
+<div class="p-2 bg-surface-container border-l-2 border-tertiary border-y border-r border-outline-variant/20">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">inventory_2</span>
+<span class="font-label-md text-label-md text-on-surface">Controlled Stores</span>
+</div>
+<span class="text-tertiary text-label-sm uppercase font-mono">[WATCH]</span>
+</div>
+<div class="flex items-baseline justify-between font-telemetry-sm text-telemetry-sm">
+<span class="text-on-surface font-semibold">84% Baseline</span>
+<span class="text-tertiary font-medium">Re-order D+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest mt-1.5">
+<div class="h-full bg-tertiary" style="width: 84%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Inbound Replenishment Stream & Choke Alert -->
+<div class="bg-surface-container-lowest p- space-sm border border-outline-variant/30">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/20 mb-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-semibold">Inbound Supply Pipeline</span>
+<span class="font-telemetry-sm text-[10px] text-error font-semibold">DEFICIT GAP: 7h 30m</span>
+</div>
+<!-- Pipeline Visual Card -->
+<div class="bg-surface-container p-2 border border-outline-variant/20">
+<div class="flex items-center justify-between font-telemetry-sm text-telemetry-sm">
+<span class="text-primary font-bold">CONVOY CV-047</span>
+<span class="bg-error-container text-on-error-container px-1 py-0.2 text-[10px] font-semibold">DELAYED +4h 20m</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Payload: 4 Heavy Bowsers (16,000 L Diesel 0-Deg)
+              </div>
+<div class="flex items-center justify-between mt-2 pt-1 border-t border-outline-variant/20 font-telemetry-sm text-telemetry-sm">
+<div>
+<span class="text-outline text-[9px] uppercase block">Current ETA</span>
+<span class="text-error font-semibold">26h 10m (19:40 IST D+1)</span>
+</div>
+<div class="text-right">
+<span class="text-outline text-[9px] uppercase block">Choke Cause</span>
+<span class="text-on-surface">Zojila Pass Icing</span>
+</div>
+</div>
+<!-- Deficit Visual Graph Bar -->
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20">
+<div class="flex justify-between font-telemetry-sm text-[10px] mb-1">
+<span class="text-error">Stock Exhaust: 18h 40m</span>
+<span class="text-on-surface-variant">ETA: 26h 10m</span>
+</div>
+<div class="h-2.5 w-full bg-surface-container-lowest flex">
+<div class="h-full bg-error" style="width: 71%" title="Depleted before arrival"></div>
+<div class="h-full bg-error-container" style="width: 29%" title="7h 30m Deficit Window"></div>
+</div>
+<div class="text-center font-telemetry-sm text-[10px] text-error font-medium mt-1">
+                  ⚠️ Critical Fuel Starvation window between 12:10 and 19:40 D+1
+                </div>
+</div>
+</div>
+</div>
+<!-- Section 3: Data Provenance & Verification -->
+<div class="p-2 bg-surface-container-lowest border border-outline-variant/20 space-y-1 font-telemetry-sm text-telemetry-sm">
+<div class="font-label-sm text-[10px] uppercase text-outline tracking-wider font-semibold">Telemetry Provenance</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>RFID Scanner Node:</span>
+<span class="text-on-surface font-medium">16:52 IST (99.2% read rate)</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Station Signoff:</span>
+<span class="text-on-surface font-medium">Subedar Major Stores (Leh)</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Integrity Hash:</span>
+<span class="text-primary font-mono">SHA256: 9e4f..bc18</span>
+</div>
+</div>
+</div>
+<!-- Sticky Operational Action Footer in Drawer -->
+<div class="p-space-sm bg-surface-container border-t border-outline-variant/40 flex flex-col gap-1.5">
+<button class="w-full py-2 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md uppercase font-semibold transition-colors flex items-center justify-center gap-2 border border-primary/50">
+<span class="material-symbols-outlined text-[18px]">conversion_path</span>
+<span>Launch COA Planner for Deficit</span>
+</button>
+<div class="grid grid-cols-2 gap-1.5">
+<button class="py-1.5 bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm uppercase transition-colors border border-outline-variant/30 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[15px]">alt_route</span>
+<span>Reroute Manali</span>
+</button>
+<button class="py-1.5 bg-surface-container-high hover:bg-surface-bright text-tertiary font-label-sm text-label-sm uppercase transition-colors border border-tertiary/30 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[15px]">satellite_alt</span>
+<span>UHF Sync Ping</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+<!-- ========================================================= -->
+<!-- 4. BOTTOM TIMELINE & MOVEMENT CONTROL STRIP               -->
+<!-- ========================================================= -->
+<div class="absolute bottom-0 left-0 right-0 h-16 bg-surface-container/95 border-t border-outline-variant/40 z-30 px-space-md flex items-center justify-between backdrop-blur-md">
+<!-- Time Scrubber & Quick Play Controls -->
+<div class="flex items-center gap-space-md w-full max-w-2xl">
+<div class="flex items-center gap-1 border-r border-outline-variant/30 pr-space-sm">
+<button class="w-7 h-7 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface flex items-center justify-center border border-outline-variant/30 transition-colors" id="btn-scrub-play">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+</button>
+<button class="w-7 h-7 bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant flex items-center justify-center border border-outline-variant/30" id="btn-scrub-reset">
+<span class="material-symbols-outlined text-[16px]">replay</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex items-center justify-between text-telemetry-sm font-telemetry-sm text-on-surface-variant mb-1">
+<span class="text-primary font-semibold">T+00h (LIVE: 17:30 IST)</span>
+<span>+12h</span>
+<span class="text-error font-semibold">+24h (D+1 Deficit)</span>
+<span>+36h</span>
+<span>+48h</span>
+<span>+72h</span>
+</div>
+<!-- Slider Track -->
+<div class="relative w-full flex items-center">
+<input class="w-full h-1.5 bg-surface-container-highest appearance-none cursor-pointer accent-primary focus:outline-none" id="timeline-slider" max="72" min="0" step="1" type="range" value="0"/>
+<!-- Critical Marker Pin on timeline -->
+<div class="absolute left-[25.9%] -top-1 w-1.5 h-3.5 bg-error pointer-events-none" title="Stock-out: +18h 40m"></div>
+</div>
+</div>
+</div>
+<!-- Quick Track Convoy Status Chips -->
+<div class="hidden xl:flex items-center gap-1.5 border-l border-outline-variant/30 pl-space-md">
+<span class="font-telemetry-sm text-[10px] text-outline uppercase tracking-wider mr-1">Active Convoys:</span>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 border border-error/40 text-error font-telemetry-sm text-telemetry-sm">
+<span class="w-1.5 h-1.5 bg-error"></span>
+<span>CV-047</span>
+<span class="text-[10px] font-semibold">[DELAY]</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 border border-outline-variant/30 text-secondary font-telemetry-sm text-telemetry-sm">
+<span class="w-1.5 h-1.5 bg-secondary"></span>
+<span>CV-052</span>
+<span class="text-[10px] text-on-surface-variant">[STAGING]</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 border border-primary/40 text-primary font-telemetry-sm text-telemetry-sm">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+<span>CV-061</span>
+<span class="text-[10px] text-on-surface-variant">[EN ROUTE]</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 border border-outline-variant/30 text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<span class="w-1.5 h-1.5 bg-outline"></span>
+<span>CV-071</span>
+<span class="text-[10px] text-outline">[STANDBY]</span>
+</div>
+</div>
+<!-- Tactical GIS Mode Action -->
+<div class="flex items-center gap-2">
+<button class="hidden lg:flex items-center gap-1 px-2.5 py-1.5 bg-surface-container-high hover:bg-surface-bright text-on-surface border border-outline-variant/30 font-label-sm text-label-sm uppercase transition-colors">
+<span class="material-symbols-outlined text-[15px]">straighten</span>
+<span>Measure Azimuth</span>
+</button>
+<button class="px-3 py-1.5 bg-primary hover:bg-primary-fixed text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors flex items-center gap-1 border border-primary-fixed">
+<span class="material-symbols-outlined text-[15px]">print</span>
+<span>Export Brief Overlay</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Interaction Logic (Vanilla JS) -->
